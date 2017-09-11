@@ -30,7 +30,7 @@ of creating a new one, otherwise it just inserts it.
 Simply fetches an item by some specified key. You can include multiple criteria,
 but be aware that ALL criteria must match (it simulates an SQL `andWhere()`)
 
-`GenericRepo` is an ES6 Class you can `extend` if you need more methods.
+`MockRepo` is an ES6 Class you can `extend` if you need more methods.
 
 ### Example
 
