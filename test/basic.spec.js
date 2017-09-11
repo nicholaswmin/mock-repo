@@ -20,6 +20,28 @@ describe('#Instantiation', () => {
   })
 })
 
+describe('#Insert', () => {
+  beforeEach(() => {
+    return mockRepo.insert(null, {
+      id_user: 1,
+      name: 'John Doe'
+    })
+  })
+
+  it('inserts an item', () => {
+    mockRepo.items.should.have.length(1)
+  })
+
+  it('inserts an again, even if it already exists by primary key', () => {
+    return mockRepo.upsert(null, {
+      id_user: 1,
+      name: 'John Doe'
+    }).then(() => {
+      mockRepo.items.should.have.length(1)
+    })
+  })
+})
+
 describe('#Upsert', () => {
   describe('Item does not already exist by primary key', () => {
     beforeEach(() => {

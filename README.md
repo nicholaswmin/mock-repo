@@ -17,7 +17,11 @@ $ npm install --save-dev mock-repo
 This module provides an ES6 Class with 2 methods that are most commonly
 present in Repositories.
 
-The 2 methods are:
+The 3 methods are:
+
+- `insert()`
+
+Simply adds an item, even it already exists by `primary_key`
 
 - `upsert()`
 
@@ -31,6 +35,7 @@ Simply fetches an item by some specified key. You can include multiple criteria,
 but be aware that ALL criteria must match (it simulates an SQL `andWhere()`)
 
 `MockRepo` is an ES6 Class you can `extend` if you need more methods.
+
 
 ### Example
 

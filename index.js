@@ -6,6 +6,12 @@ class MockRepo {
     this.items = items || []
   }
 
+  async insert(db, item) {
+    this.items.push(item)
+
+    return
+  }
+
   async upsert(db, item) {
     const existing = await this.get(db, {
       [this._primary_key]: item[this._primary_key]
