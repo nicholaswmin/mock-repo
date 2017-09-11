@@ -1,0 +1,36 @@
+{
+  "name": "mock-repo",
+  "version": "0.1.0",
+  "description": "A generic mock repo for testing using the Repository Pattern",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicholaswmin/mock-repo.git"
+  },
+  "keywords": [
+    "domain-driven-design",
+    "ddd",
+    "repo",
+    "repository",
+    "pattern",
+    "unit",
+    "testing",
+    "mock"
+  ],
+  "author": "@nicholaswmin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nicholaswmin/mock-repo/issues"
+  },
+  "homepage": "https://github.com/nicholaswmin/mock-repo#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^3.5.2"
+  }
+}
