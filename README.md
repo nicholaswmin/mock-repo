@@ -36,8 +36,8 @@ but be aware that ALL criteria must match (it simulates an SQL `andWhere()`)
 
 ```javascript
 
-const GenericRepo = require('generic-repo')
-const userRepo = new GenericRepo({ primary_key: 'id_user' })
+const MockRepo = require('mock-repo')
+const userRepo = new MockRepo({ primary_key: 'id_user' })
 
 /*
  * 1st argument on methods should be `null` since it simulates the `db` object
