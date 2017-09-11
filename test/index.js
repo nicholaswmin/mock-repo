@@ -20,7 +20,6 @@ describe('#Instantiation', () => {
   })
 })
 
-
 describe('#Upsert', () => {
   describe('Item does not already exist by primary key', () => {
     beforeEach(() => {
@@ -80,7 +79,6 @@ describe('#get', () => {
       })
     })
   })
-
 
   it('returns an item by primary key', () => {
     return mockRepo.get(null, { id_user: 1 }).then(result => {
