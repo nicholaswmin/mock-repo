@@ -47,9 +47,10 @@ const MockRepo = require('mock-repo')
 const userRepo = new MockRepo({ primary_key: 'id_user' })
 
 /*
- * 1st argument on *all* methods is supposed to be a `db` object in production
- * - when you actually use a real database. You can pass `null` when using
- *   this module
+ * 1st argument on *all* methods is supposed to be a `db` object in production,
+ * when you actually use a real database.
+ *
+ * You can pass `null` when using this module
  */
 userRepo.upsert(null, { id_user: 1, name: 'John Doe' })
   .then(() => {
