@@ -60,15 +60,10 @@ userRepo.upsert(null, { id_user: 1, name: 'John Doe' })
     return userRepo.get(null, { id_user: 1 })
   })
   .then(result => {
-    console.log(result)
+    console.log(result) // logs `{ id_user: 1, name: 'John Doooe' }`
+    console.log(userRepo.items.length) // logs '1'
     return
-    // logs `{ id_user: 1, name: 'John Doooe' }`
   })
-  .then(() => {
-    console.log(userRepo.items.length)
-    // logs `1`
-  })
-
 ```
 
 **Note**: Stored items are held in the `items` prop of the Mock Repo, i.e

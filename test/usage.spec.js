@@ -25,10 +25,8 @@ describe('README usage instructions', () => {
       })
       .then(result => {
         result.should.deep.equal({ id_user: 1, name: 'John Doooe' })
-        return
-      })
-      .then(() => {
         userRepo.items.length.should.equal(1)
+        return
       })
   })
 })

@@ -51,11 +51,11 @@ describe('#Upsert', () => {
       })
     })
 
-    it('inserts an item if it doesnt alread exist', () => {
+    it('inserts a new item', () => {
       mockRepo.items.should.have.length(1)
     })
 
-    it('inserted item matches the insertion', () => {
+    it('inserted item matches is the one we passed', () => {
       mockRepo.items.pop().should.deep.equal({
         id_user: 1,
         name: 'John Doe'
@@ -63,7 +63,7 @@ describe('#Upsert', () => {
     })
   })
 
-  describe('Item already exists', () => {
+  describe('Item already exists by primary_key', () => {
     beforeEach(() => {
       return mockRepo.upsert(null, {
         id_user: 1,
@@ -76,11 +76,11 @@ describe('#Upsert', () => {
       })
     })
 
-    it('inserts an item if it doesnt alread exist', () => {
+    it('does not insert a new item', () => {
       mockRepo.items.should.have.length(1)
     })
 
-    it('inserted item matches the update', () => {
+    it('existing item is updated to match the one we passed', () => {
       mockRepo.items.pop().should.deep.equal({
         id_user: 1,
         name: 'John Doe Updated'
