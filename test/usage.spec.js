@@ -15,7 +15,7 @@ beforeEach(() => {
 })
 
 describe('README usage instructions', () => {
-  it('does what is says on the label', () => {
+  it('README usage example does what it says on the label', () => {
     return userRepo.upsert(null, { id_user: 1, name: 'John Doe' })
       .then(() => {
         return userRepo.upsert(null, { id_user: 1, name: 'John Doooe' })

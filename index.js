@@ -8,8 +8,6 @@ class MockRepo {
 
   async insert(db, item) {
     this.items.push(item)
-
-    return
   }
 
   async upsert(db, item) {
@@ -23,18 +21,16 @@ class MockRepo {
           this.items[index] = item
         }
       })
-    } else {
-      this.items.push(item);
+
+      return
     }
 
-    return
+    this.items.push(item);
   }
 
   async get(db, filter) {
-    const filterKeys = Object.keys(filter)
-
     return this.items.find(existingItem => {
-      return filterKeys.every(key => {
+      return Object.keys(filter).every(key => {
         return existingItem[key] === filter[key]
       })
     })

@@ -32,7 +32,7 @@ describe('#Insert', () => {
     mockRepo.items.should.have.length(1)
   })
 
-  it('inserts an again, even if it already exists by primary key', () => {
+  it('inserts an item again, even if it already exists by primary key', () => {
     return mockRepo.upsert(null, {
       id_user: 1,
       name: 'John Doe'

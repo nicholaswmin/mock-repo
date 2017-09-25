@@ -14,30 +14,32 @@ $ npm install --save-dev mock-repo
 
 ## Usage
 
-This module provides an ES6 Class with 2 methods that are most commonly
-present in Repositories.
-
-The 3 methods are:
+This module exports an ES6 Class with simple methods that are most commonly
+present in Repositories. You can `extend` if you need more methods.
 
 - `insert()`
 
-Simply adds an item, even it already exists by `primary_key`
+Adds an item, even it already exists by `primary_key`
 
 - `upsert()`
 
-You guessed it. If you provide the same object twice to this method, with
-identical `primary_key`, the repo will update the existing object, instead
-of creating a new one, otherwise it just inserts it.
+If the provided object pre-exists by `primary_key`, then the repo will update
+the existing object, otherwise it just inserts it.
 
 - `get()`
 
-Simply fetches an item by some specified key. You can include multiple criteria,
-but be aware that ALL criteria must match (it simulates an SQL `andWhere()`)
+Returns an item by some specified criteria.
 
-`MockRepo` is an ES6 Class you can `extend` if you need more methods.
-
+You can include multiple criteria,
+but be aware that *all* criteria must match (it simulates an SQL `andWhere()`).
 
 ### Example
+
+In the following example we are going to:
+
+- Insert a user with `name` 'John Doe' and `id_user` 1.
+- Then update his `name` to 'John Doooe'.
+- Then get him back by the `id_user` we used when we first inserted him.
 
 ```javascript
 
@@ -45,8 +47,9 @@ const MockRepo = require('mock-repo')
 const userRepo = new MockRepo({ primary_key: 'id_user' })
 
 /*
- * 1st argument on methods should be `null` since it simulates the `db` object
- * in a real Repository
+ * 1st argument on *all* methods is supposed to be a `db` object in production
+ * - when you actually use a real database. You can pass `null` when using
+ * 	 this module
  */
 userRepo.upsert(null, { id_user: 1, name: 'John Doe' })
   .then(() => {
@@ -66,6 +69,9 @@ userRepo.upsert(null, { id_user: 1, name: 'John Doe' })
   })
 
 ```
+
+**Note**: Stored items are held in the `items` prop of the Mock Repo, i.e
+`userRepo.items`, will return all the stored users.
 
 ## Tests
 
