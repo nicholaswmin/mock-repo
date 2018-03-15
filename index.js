@@ -1,39 +1,34 @@
 'use strict'
 
 class MockRepo {
-  constructor({ primary_key, items }) {
-    this._primary_key = primary_key
-    this.items = items || []
+  constructor({ primary_key, Class }) {
+    this.primary_key = primary_key
+    this.Class = Class
+
+    this.items = []
   }
 
-  async insert(db, item) {
-    this.items.push(item)
-  }
-
-  async upsert(db, item) {
-    const existing = await this.get(db, {
-      [this._primary_key]: item[this._primary_key]
+  async upsert(db, instance) {
+    let existing = await this.get(db, {
+      [this.primary_key]: instance.props[this.primary_key]
     })
 
     if (existing) {
-      this.items.forEach((existingItem, index) => {
-        if (existingItem[this._primary_key] === item[this._primary_key]) {
-          this.items[index] = item
-        }
-      })
-
+      existing = JSON.stringify(instance)
       return
     }
 
-    this.items.push(item);
+    await this.items.push(JSON.stringify(instance))
   }
 
   async get(db, filter) {
-    return this.items.find(existingItem => {
+    const obj = this.items.map(item => JSON.parse(item)).find(item => {
       return Object.keys(filter).every(key => {
-        return existingItem[key] === filter[key]
+        return item.props[key] === filter[key]
       })
     })
+
+    return obj ? new this.Class(obj.props) : null
   }
 }
 

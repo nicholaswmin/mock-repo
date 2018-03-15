@@ -1,6 +1,6 @@
 {
   "name": "mock-repo",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "A generic mock repo for testing using the Repository Pattern",
   "main": "index.js",
   "directories": {
@@ -31,6 +31,7 @@
   "homepage": "https://github.com/nicholaswmin/mock-repo#readme",
   "devDependencies": {
     "chai": "^4.1.2",
+    "guid": "0.0.12",
     "mocha": "^3.5.2"
   }
 }
