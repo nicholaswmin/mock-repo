@@ -84,7 +84,7 @@ Then:
 
 const MockRepo = require('mock-repo')
 const userRepo = new MockRepo({
-  Class: User // needed for rehydration,
+  Class: User,
   primary_key: 'id_user'
 })
 
