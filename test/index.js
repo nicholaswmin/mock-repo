@@ -19,7 +19,7 @@ let repo
 
 beforeEach(() => {
   repo = new MockRepo({
-    primary_key: 'id_user',
+    primaryKey: 'id_user',
     Class: User
   })
 })

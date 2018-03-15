@@ -1,8 +1,8 @@
 'use strict'
 
 class MockRepo {
-  constructor({ primary_key, Class }) {
-    this.primary_key = primary_key
+  constructor({ primaryKey, Class }) {
+    this.primaryKey = primaryKey
     this.Class = Class
 
     this.items = []
@@ -10,7 +10,7 @@ class MockRepo {
 
   async upsert(db, instance) {
     let existing = await this.get(db, {
-      [this.primary_key]: instance.props[this.primary_key]
+      [this.primaryKey]: instance.props[this.primaryKey]
     })
 
     if (existing) {

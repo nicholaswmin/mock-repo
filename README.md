@@ -47,7 +47,7 @@ class User {
 
 - `upsert()`
 
-If the provided object pre-exists by `primary_key`, then the repo will update
+If the provided object pre-exists by `primaryKey`, then the repo will update
 the existing object, otherwise it will insert it.
 
 - `get()`
@@ -85,7 +85,7 @@ Then:
 const MockRepo = require('mock-repo')
 const userRepo = new MockRepo({
   Class: User,
-  primary_key: 'id_user'
+  primaryKey: 'id_user'
 })
 
 /*
