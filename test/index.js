@@ -30,10 +30,8 @@ describe('#upsert', () => {
       .then(result => {
         repo.items.should.have.length(1)
         JSON.parse(repo.items[0]).should.deep.equal({
-          props: {
-            id_user: 'foo',
-            name: 'John Doe'
-          }
+          id_user: 'foo',
+          name: 'John Doe'
         })
       })
   })
@@ -43,10 +41,8 @@ describe('#upsert', () => {
       .then(result => {
         repo.items.should.have.length(1)
         JSON.parse(repo.items[0]).should.deep.equal({
-          props: {
-            id_user: 'foo',
-            name: 'Mary Jane'
-          }
+          id_user: 'foo',
+          name: 'Mary Jane'
         })
       })
   })

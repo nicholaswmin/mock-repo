@@ -14,21 +14,21 @@ class MockRepo {
     })
 
     if (existing) {
-      existing = JSON.stringify(instance)
+      existing = JSON.stringify(instance.props)
       return
     }
 
-    await this.items.push(JSON.stringify(instance))
+    await this.items.push(JSON.stringify(instance.props))
   }
 
   async get(db, filter) {
     const obj = this.items.map(item => JSON.parse(item)).find(item => {
       return Object.keys(filter).every(key => {
-        return item.props[key] === filter[key]
+        return item[key] === filter[key]
       })
     })
 
-    return obj ? new this.Class(obj.props) : null
+    return obj ? new this.Class(obj) : null
   }
 }
 
