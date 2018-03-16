@@ -20,7 +20,7 @@ let repo
 beforeEach(() => {
   repo = new MockRepo({
     primaryKey: 'id_user',
-    Class: User
+    constructAs: obj => new User(obj)
   })
 })
 

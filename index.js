@@ -1,9 +1,9 @@
 'use strict'
 
 class MockRepo {
-  constructor({ primaryKey, Class }) {
+  constructor({ primaryKey, constructAs }) {
     this.primaryKey = primaryKey
-    this.Class = Class
+    this.constructAs = constructAs
 
     this.items = []
   }
@@ -28,13 +28,13 @@ class MockRepo {
     const obj = this.items.map(item => JSON.parse(item))
       .find(this._matchesFilter(filter))
 
-    return obj ? new this.Class(obj) : null
+    return obj ? this.constructAs(obj) : null
   }
 
   async getAll(db, filter) {
     return this.items.map(item => JSON.parse(item))
       .filter(this._matchesFilter(filter))
-      .map(item => new this.Class(item))
+      .map(item => this.constructAs(item))
   }
 
   _updateByPK(pk, newValue) {

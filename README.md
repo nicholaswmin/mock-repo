@@ -89,8 +89,8 @@ Then:
 
 const MockRepo = require('mock-repo')
 const userRepo = new MockRepo({
-  Class: User,
-  primaryKey: 'id_user'
+  primaryKey: 'id_user',
+  constructAs: data => new User(data)
 })
 
 /*
