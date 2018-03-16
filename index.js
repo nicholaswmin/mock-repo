@@ -14,7 +14,10 @@ class MockRepo {
     })
 
     if (existing) {
-      existing = JSON.stringify(instance.props)
+      this._updateByPK(
+        existing.props[this.primaryKey],
+        JSON.stringify(instance.props)
+      )
       return
     }
 
@@ -32,6 +35,16 @@ class MockRepo {
     return this.items.map(item => JSON.parse(item))
       .filter(this._matchesFilter(filter))
       .map(item => new this.Class(item))
+  }
+
+  _updateByPK(pk, newValue) {
+    this.items.forEach((item, i) => {
+      const parsed = JSON.parse(item)
+
+      if (parsed[this.primaryKey] === pk) {
+        this.items[i] = newValue
+      }
+    })
   }
 
   _matchesFilter(filter) {
