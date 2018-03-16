@@ -45,17 +45,22 @@ class User {
 }
 ```
 
-- `upsert()`
+- `upsert(db, instance)`
 
 If the provided object pre-exists by `primaryKey`, then the repo will update
 the existing object, otherwise it will insert it.
 
-- `get()`
+- `get(db, filter)`
 
 Returns an item by some specified criteria.
 
 You can include multiple criteria,
 but be aware that *all* criteria must match (it simulates an SQL `andWhere()`).
+
+- `getAll(db, filter)`
+
+Same as `get()` but returns multiple instances. If no `filter` is provided,
+it returns all instances.
 
 ### Example
 

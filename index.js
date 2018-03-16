@@ -22,13 +22,24 @@ class MockRepo {
   }
 
   async get(db, filter) {
-    const obj = this.items.map(item => JSON.parse(item)).find(item => {
+    const obj = this.items.map(item => JSON.parse(item))
+      .find(this._matchesFilter(filter))
+
+    return obj ? new this.Class(obj) : null
+  }
+
+  async getAll(db, filter) {
+    return this.items.map(item => JSON.parse(item))
+      .filter(this._matchesFilter(filter))
+      .map(item => new this.Class(item))
+  }
+
+  _matchesFilter(filter) {
+    return filter ? item => {
       return Object.keys(filter).every(key => {
         return item[key] === filter[key]
       })
-    })
-
-    return obj ? new this.Class(obj) : null
+    } : item
   }
 }
 

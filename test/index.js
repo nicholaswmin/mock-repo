@@ -50,7 +50,7 @@ describe('#upsert', () => {
 
 describe('#get', () => {
   it('Retrieves an instance that matches the filter ', () => {
-    repo.upsert(null, new User({ id_user: 'foo', name: 'John Doe' }))
+    return repo.upsert(null, new User({ id_user: 'foo', name: 'John Doe' }))
       .then(() => {
         return repo.get(null, { name: 'John Doe' })
       })
@@ -61,6 +61,23 @@ describe('#get', () => {
             id_user: 'foo',
             name: 'John Doe'
           }
+        })
+      })
+  })
+})
+
+describe('#getAll', () => {
+  it('Retrieves instances that match the filter ', () => {
+    return repo.upsert(null, new User({ id_user: 'foo', name: 'John' }))
+      .then(() => {
+        return repo.upsert(null, new User({ id_user: 'bar', name: 'John' }))
+      })
+      .then(() => {
+        return repo.getAll(null, { name: 'John' })
+      })
+      .then(result => {
+        result.forEach(result => {
+          result.should.be.an.instanceof(User)
         })
       })
   })
